@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  sqlserver:
+    container_name: mssql
+    image: mcr.microsoft.com/azure-sql-edge:latest
+    platform: linux/arm64/v8
+    environment:
+      ACCEPT_EULA: Y
+      SA_PASSWORD: DamBui1d3r$
+      DISABLE_SSL: 1
+    ports:
+      - "1433:1433"
+    volumes:
+      - $PWD/mssql-data:/var/opt/mssql/data
+
+volumes:
+  mssql-data:
+    driver: local
